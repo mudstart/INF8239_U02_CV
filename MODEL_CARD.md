@@ -111,8 +111,8 @@ Camisa → Abrigo (130): siempre entre prendas superiores. Matrices completas en
 - **Parámetros:** CNN 19.466; baseline 50.890 (la CNN tiene un 62 % menos).
 - **Tiempo de entrenamiento (8 épocas):** CNN unos 50 s; baseline unos 6 s. En varias
   ejecuciones osciló entre 48 y 54 s (CNN) y entre 5 y 6 s (baseline): la CNN tarda
-  entre 8 y 10 veces más (54,1 s frente a 5,8 s en la ejecución registrada).
-- **Tiempo de inferencia:** CNN 0,072 ms por imagen; baseline 0,031 ms por imagen en la
+  entre 8 y 10 veces más (51,6 s frente a 5,2 s en la ejecución registrada).
+- **Tiempo de inferencia:** CNN 0,055 ms por imagen; baseline 0,027 ms por imagen en la
   ejecución registrada (mediana de 5 repeticiones sobre las 10.000 imágenes de prueba, tras
   una predicción de calentamiento). Entre ejecuciones, la CNN osciló entre 0,054 y
   0,072 ms según la carga del equipo: es entre 1,8 y 2,3 veces más lenta.

@@ -69,6 +69,24 @@ No suba nunca `.venv`.
 Las métricas de desempeño son idénticas en cada ejecución (semilla 42). Los tiempos varían
 ligeramente según la carga del equipo.
 
+## Notebook ejecutado
+
+`notebooks/ejercicio04.ipynb` reúne la evidencia con salidas y figuras: entorno, auditoría y
+partición, curvas, métricas globales y por clase, matrices de confusión, errores visuales,
+costo y pruebas. **No reentrena:** carga `models/dense.keras` y `models/cnn.keras`, recalcula
+las métricas y comprueba que coinciden con `reports/`. Para reejecutarlo:
+
+```bash
+uv run jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio04.ipynb
+```
+
+## Dependencias
+
+`uv.lock` es la fuente de verdad. `requirements.txt` es su exportación con TensorFlow para
+CPU, para entornos sin uv (`pip install -r requirements.txt`); se regenera con
+`uv export --format requirements.txt --no-hashes --extra cpu --output-file requirements.txt`.
+`requirements-colab.txt` es la lista mínima para Google Colab.
+
 ## Pruebas
 
 `uv run pytest -q` ejecuta 15 pruebas rápidas (no descargan datos ni entrenan) sobre los
@@ -87,7 +105,7 @@ Partición de prueba de Fashion-MNIST (10.000 imágenes), 8 épocas, CPU AMD Ryz
 | Parámetros | 50.890 | **19.466** |
 | Archivo del modelo | 215,5 KB | **102,9 KB** |
 | Tiempo de entrenamiento | **unos 6 s** | unos 50 s |
-| Inferencia por imagen | **unos 0,03 ms** | 0,054–0,072 ms |
+| Inferencia por imagen | **0,027–0,034 ms** | 0,054–0,072 ms |
 
 Análisis completo por paso (curvas, comparación, errores): `reports/lab07_analisis.md`.
 Ficha del modelo: `MODEL_CARD.md`.
@@ -134,3 +152,56 @@ dataset propio del dominio con licencia y etiquetado documentados, reentrenar y 
 con métricas por clase en ese contexto, entrenar hasta la convergencia, repetir la
 comparación de costo en el hardware real de uso y mantener revisión humana de las
 predicciones, sobre todo en las clases que se confunden.
+
+## Uso de herramientas de IA
+
+**Herramienta:** Claude Code (Anthropic), modelo Claude Opus 5.5, en la aplicación de
+escritorio de Claude, con acceso al repositorio y a la terminal.
+
+**Uso:** apoyo para contrastar el proyecto base con el manual del LAB07, proponer y escribir
+código, ejecutar comandos, redactar borradores de documentación y detectar errores. El
+estudiante decidió el alcance de cada cambio, ejecutó y comprobó los resultados, y es
+responsable de los datos, el código, las referencias y las conclusiones.
+
+**Prompts relevantes** (parafraseados y agrupados por propósito):
+
+| Propósito | Solicitud |
+|---|---|
+| Diagnóstico inicial | Analizar el proyecto base de visión y resumir su estado. |
+| Organización | Evaluar si convenía trabajar el LAB07 dentro del repositorio de PLN o en uno propio. |
+| Verificación de requisitos | Validar, punto por punto, si el proyecto cumplía cada paso del manual. |
+| Corrección | Aplicar las soluciones propuestas para los pasos que no se cumplían. |
+| Control de calidad | Volver a evaluar cada paso después de los cambios. |
+
+**Componentes desarrollados con apoyo de IA:** las ampliaciones de `scripts/train_cv.py`
+(resumen de particiones, historial y curvas, métricas por clase, medición de inferencia con
+calentamiento y repeticiones, guardado de modelos sin optimizador, información del entorno,
+selección de errores y matrices con nombres), la validación de etiquetas en
+`src/inf8239_u02_cv/data.py`, las 12 pruebas nuevas, `MODEL_CARD.md`,
+`reports/lab07_analisis.md`, `notebooks/ejercicio04.ipynb` y los borradores del cierre
+interpretativo.
+
+**Verificaciones realizadas:**
+
+- Las métricas de desempeño se reprodujeron idénticas en todas las ejecuciones, incluida
+  una copia limpia del repositorio clonada desde GitHub siguiendo solo este README.
+- El notebook recalcula las métricas desde los modelos guardados y comprueba que coinciden
+  con `reports/cv_metrics.json`, y que la partición coincide con `data_summary.json`.
+- Cada cifra del reporte, la Model Card y este README se comprobó contra los archivos de
+  `reports/`.
+
+**Correcciones realizadas durante el trabajo:**
+
+- El `.gitignore` del proyecto base excluía `reports/` y `models/`, por lo que la evidencia
+  no llegaba a GitHub; se corrigió.
+- `include_optimizer=False` no tiene efecto en Keras 3: los archivos `.keras` seguían
+  incluyendo el estado del optimizador, que triplicaba su tamaño. Se reconstruye el modelo
+  solo con arquitectura y pesos.
+- Esa reconstrucción consumía el generador aleatorio y cambiaba la inicialización de la CNN
+  (F1 0,7893 → 0,7865); se movió al final del script y el resultado volvió a ser idéntico.
+- La primera medición de inferencia incluía la llamada inicial de TensorFlow; se añadió una
+  predicción de calentamiento y 5 repeticiones.
+- Varias cifras de los borradores no coincidían con los datos (variación de la inferencia,
+  rangos de confianza, tiempos de una ejecución anterior) y se corrigieron.
+- La hipótesis inicial de que la CNN rendía peor por su arquitectura se reemplazó, con las
+  curvas de aprendizaje como evidencia, por la de subentrenamiento.

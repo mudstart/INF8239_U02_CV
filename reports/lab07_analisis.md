@@ -82,9 +82,9 @@ requiere NVIDIA.
 | Accuracy (prueba) | **0,866** | 0,793 | −0,073 |
 | Parámetros entrenables | 50.890 | **19.466** | −62 % |
 | Archivo del modelo (sin optimizador) | 215,5 KB | **102,9 KB** | −52 % |
-| Tiempo de entrenamiento (8 épocas) | **5,8 s** | 54,1 s | ×9,4 |
-| Inferencia, mediana de 5 repeticiones | **0,031 ms/imagen** | 0,072 ms/imagen | ×2,3 |
-| Rango de las 5 repeticiones | 0,0301–0,0312 | 0,0649–0,0801 | — |
+| Tiempo de entrenamiento (8 épocas) | **5,2 s** | 51,6 s | ×10,0 |
+| Inferencia, mediana de 5 repeticiones | **0,027 ms/imagen** | 0,055 ms/imagen | ×2,0 |
+| Rango de las 5 repeticiones | 0,0267–0,0297 | 0,0533–0,0565 | — |
 
 *Tiempos de la ejecución registrada en `cv_metrics.json`. Los tiempos cambian ligeramente
 en cada ejecución; las métricas de desempeño no (semilla fija).*
@@ -100,9 +100,9 @@ en cada ejecución; las métricas de desempeño no (semilla fija).*
 - **Inferencia:** sobre el mismo lote de 10.000 imágenes de prueba. Primero se hace una
   predicción de calentamiento que se descarta (la primera llamada incluye la preparación
   interna de TensorFlow) y después 5 repeticiones; se informa la mediana, que no se ve
-  afectada por una repetición atípica. En la ejecución registrada la densa varió poco
-  respecto a su mediana (−2,7 % a +0,9 %), pero la CNN varió bastante más (−10,4 % a
-  +10,6 %): los tiempos dependen de la carga del equipo en ese momento. En las ejecuciones
+  afectada por una repetición atípica. En la ejecución registrada la variación respecto a
+  la mediana fue de −2,1 % a +9,0 % en la densa (una repetición más lenta) y de −2,9 % a
+  +2,9 % en la CNN. Los tiempos dependen de la carga del equipo: en las ejecuciones
   realizadas, la mediana de la CNN osciló entre 0,054 y 0,072 ms por imagen y la proporción
   entre modelos entre ×1,8 y ×2,3. La conclusión (la CNN es unas 2 veces más lenta) se
   mantiene en todas.

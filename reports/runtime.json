@@ -1,0 +1,8 @@
+{
+  "cpu": "AMD Ryzen 5 5600X 6-Core Processor",
+  "logical_cores": 12,
+  "device": "CPU",
+  "os": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.14",
+  "tensorflow": "2.21.0"
+}

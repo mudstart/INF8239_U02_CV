@@ -1,0 +1,38 @@
+{
+  "dense": {
+    "f1_macro": 0.8646890188853495,
+    "accuracy": 0.8663,
+    "parameters": 50890,
+    "train_seconds": 5.173611799997161,
+    "inference_ms_per_image": 0.027254699998593424,
+    "inference_ms_runs": [
+      0.02971,
+      0.0269,
+      0.02669,
+      0.02725,
+      0.028
+    ],
+    "epochs_run": 8,
+    "best_epoch": 8,
+    "model_file": "dense.keras",
+    "model_file_kb": 215.5
+  },
+  "cnn": {
+    "f1_macro": 0.7893026208264977,
+    "accuracy": 0.7931,
+    "parameters": 19466,
+    "train_seconds": 51.61957409999741,
+    "inference_ms_per_image": 0.054897129999881146,
+    "inference_ms_runs": [
+      0.05597,
+      0.05649,
+      0.054,
+      0.0549,
+      0.05329
+    ],
+    "epochs_run": 8,
+    "best_epoch": 8,
+    "model_file": "cnn.keras",
+    "model_file_kb": 102.9
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "entrenamiento": {
+    "shape": [
+      54000,
+      28,
+      28,
+      1
+    ],
+    "per_class": {
+      "Camiseta/top": 5370,
+      "Pantalón": 5416,
+      "Jersey": 5398,
+      "Vestido": 5395,
+      "Abrigo": 5367,
+      "Sandalia": 5409,
+      "Camisa": 5435,
+      "Zapatilla": 5445,
+      "Bolso": 5384,
+      "Botín": 5381
+    }
+  },
+  "validación": {
+    "shape": [
+      6000,
+      28,
+      28,
+      1
+    ],
+    "per_class": {
+      "Camiseta/top": 630,
+      "Pantalón": 584,
+      "Jersey": 602,
+      "Vestido": 605,
+      "Abrigo": 633,
+      "Sandalia": 591,
+      "Camisa": 565,
+      "Zapatilla": 555,
+      "Bolso": 616,
+      "Botín": 619
+    }
+  },
+  "prueba": {
+    "shape": [
+      10000,
+      28,
+      28,
+      1
+    ],
+    "per_class": {
+      "Camiseta/top": 1000,
+      "Pantalón": 1000,
+      "Jersey": 1000,
+      "Vestido": 1000,
+      "Abrigo": 1000,
+      "Sandalia": 1000,
+      "Camisa": 1000,
+      "Zapatilla": 1000,
+      "Bolso": 1000,
+      "Botín": 1000
+    }
+  }
+}

@@ -1,0 +1,5 @@
+tensorflow>=2.21,<2.22
+matplotlib
+numpy
+scikit-learn
+pytest

@@ -1,0 +1,17 @@
+test_index,real,predicted,pair_errors,confidence,real_class_probability,group
+4140,Camisa,Camiseta/top,274,0.8232,0.078,mayor confianza
+9122,Camisa,Camiseta/top,274,0.8222,0.0722,mayor confianza
+3488,Camisa,Camiseta/top,274,0.2908,0.2327,menor confianza
+6363,Camisa,Camiseta/top,274,0.2862,0.1625,menor confianza
+8009,Jersey,Abrigo,155,0.7721,0.0739,mayor confianza
+9337,Jersey,Abrigo,155,0.7393,0.1064,mayor confianza
+4363,Jersey,Abrigo,155,0.2815,0.2367,menor confianza
+3554,Jersey,Abrigo,155,0.2627,0.1407,menor confianza
+3301,Jersey,Camisa,143,0.601,0.2086,mayor confianza
+9443,Jersey,Camisa,143,0.5609,0.0895,mayor confianza
+8624,Jersey,Camisa,143,0.2753,0.0594,menor confianza
+4674,Jersey,Camisa,143,0.2625,0.245,menor confianza
+4079,Camisa,Abrigo,130,0.7181,0.1095,mayor confianza
+7004,Camisa,Abrigo,130,0.7102,0.1378,mayor confianza
+2986,Camisa,Abrigo,130,0.2978,0.281,menor confianza
+5168,Camisa,Abrigo,130,0.2829,0.194,menor confianza
